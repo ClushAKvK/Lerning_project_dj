@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Оставьте свой комментарий</title>
+</head>
+<body>
+    <h2>Оставьте свой комментарий по поводу кинги "{{ book.title }}"</h2>
+    <form method="POST" action="{% url 'booklist:redirect' user.id book.id%}">
+    {% csrf_token %}
+        <div>
+            <select name="rate" id="selectvalue">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+        </div>
+        <div><textarea name="comment_text" id="comment" cols="70" rows="10"></textarea></div>
+        <div><button type="submit">Оставить комментарий</button></div>
+    </form>
+</body>
+</html>

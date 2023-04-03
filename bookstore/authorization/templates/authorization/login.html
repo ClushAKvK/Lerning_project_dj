@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Авторизцаия</title>
+</head>
+<body>
+    <h3>Выберите пользователя</h3>
+    <form method="POST" action="{% url 'authorization:redirect' %}">
+    {% csrf_token %}
+        <div>
+            <select name="user" id="selectvalue">
+                {% for user in users %}
+                    <option value="{{ user.id }}">{{ user.nickname }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div><button type="submit">Войти</button></div>
+    </form>
+</body>
+</html>

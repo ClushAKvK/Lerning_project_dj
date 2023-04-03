@@ -11,8 +11,19 @@
     <h1>Список всех книг на сайте</h1>
     {% for book in books %}
         <div>
-            <a href="{% url 'booklist:detail' book.id %}">{{ book.title }}</a>
+            <a href="{% url 'booklist:detail' user.id book.id %}">{{ book.title }}</a>
         </div>
     {% endfor %}
+
+    {% if user.id == 0 %}
+        <span>Чтобы оставлять комментарии необходимо <a href="{% url 'authorization:login' %}">авторизоваться</a></span>
+    {% else %}
+        <span>Вы можете <a href="{% url 'authorization:login' %}">сменить</a> пользователя</span>
+    {% endif %}
 </body>
+<footer>
+    {% if user.id != 0 %}
+        <span>Пользователь: {{ user.nickname }}</span>
+    {% endif %}
+</footer>
 </html>

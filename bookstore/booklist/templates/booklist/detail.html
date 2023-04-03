@@ -25,5 +25,14 @@
             </li>
         {% endfor %}
     </ul>
+
+    {% if user.id != 0 %}
+        <a href="{% url 'booklist:comment' user.id book.id %}">Вы можете оставить комментарий</a>
+    {% endif %}
+
+    <a href="{% url 'booklist:index' %}">На главную</a>
 </body>
+<footer>
+    <span>Пользователь: {{ user.nickname }}</span>
+</footer>
 </html>
